@@ -11,8 +11,12 @@ services:
   prometheus:
     image: prom/prometheus:v2.17.1
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
   grafana:
     image: grafana/grafana:6.7.2
+    volumes:
+      - ./grafana/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
     ports:
       - 3000:3000

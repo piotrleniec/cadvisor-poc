@@ -1,0 +1,10 @@
+apiVersion: 1
+
+providers:
+  - name: Self-Hosted GitHub Actions
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards
+    editable: false
+    disableDeletion: true
+    allowUiUpdates: false
